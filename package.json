@@ -17,5 +17,6 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1"
-  }
+  },
+  "repository": "git@github.com:johannes-scharlach/ensure-bluebird.git"
 }
