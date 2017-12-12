@@ -1,0 +1,15 @@
+{
+  "name": "ensure-bluebird",
+  "version": "1.0.0",
+  "description": "Ensure that all returned promises are bluebird promises",
+  "main": "index.js",
+  "author": "Johannes Scharlach <johannes.scharlach@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "johanness-scripts": "^1.1.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1"
+  }
+}
