@@ -36,6 +36,41 @@ describe('ensureBluebird', () => {
     return expect(result).resolves.toBe('🎆')
   })
 
+  it('must resolve a bluebird promise when given any thenable', () => {
+    expect.assertions(2)
+    const transformed = ensureBluebird({
+      awesLater() {
+        return {
+          then(cb) {
+            setTimeout(cb, 50, '🎆')
+          },
+        }
+      },
+    })
+
+    const result = transformed.awesLater()
+    expect(result).toBeInstanceOf(require('bluebird'))
+    return expect(result).resolves.toBe('🎆')
+  })
+
+  it('must reject a bluebird promise when given a thenable calling the second cb', () => {
+    expect.assertions(2)
+    const err = Error('example error')
+    const transformed = ensureBluebird({
+      awesLater() {
+        return {
+          then(cb, errCb) {
+            setTimeout(errCb, 50, err)
+          },
+        }
+      },
+    })
+
+    const result = transformed.awesLater()
+    expect(result).toBeInstanceOf(require('bluebird'))
+    return expect(result).rejects.toBe(err)
+  })
+
   it('must pass any arguments through', () => {
     expect.assertions(1)
     const transformed = ensureBluebird({

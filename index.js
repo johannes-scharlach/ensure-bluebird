@@ -6,8 +6,10 @@ const ensureBluebirdFn = fn => {
   const newFn = function() {
     const result = fn.apply(this, arguments)
 
+    if (result == null) return result
     if (bb.prototype.isPrototypeOf(result)) return result
-    if (Promise.prototype.isPrototypeOf(result)) return bb.resolve(result)
+    if (result.then && typeof result.then === 'function')
+      return bb.resolve(result)
 
     return result
   }

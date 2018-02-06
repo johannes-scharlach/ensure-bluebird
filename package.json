@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Ensure that all returned promises are bluebird promises",
   "main": "index.js",
+  "repository": "git@github.com:johannes-scharlach/ensure-bluebird.git",
   "author": "Johannes Scharlach <johannes.scharlach@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -18,5 +19,5 @@
   "dependencies": {
     "bluebird": "^3.5.1"
   },
-  "repository": "git@github.com:johannes-scharlach/ensure-bluebird.git"
+  "files": ["index.js"]
 }
